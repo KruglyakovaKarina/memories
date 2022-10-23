@@ -10,7 +10,7 @@ export default makeStyles(() => ({
     alignItems: 'center',
   },
   heading: {
-    color: '#FFD8EE',
+    color: '#5A4873',
   },
   image: {
     marginLeft: '15px',

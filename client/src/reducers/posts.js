@@ -1,10 +1,17 @@
-import { POST_CREATE } from './constants';
-import { POST_FETCH_ALL } from './constants';
-import { POST_UPDATE } from './constants';
+import {
+  POST_CREATE,
+  POST_FETCH_ALL,
+  POST_UPDATE,
+  POST_DELETE,
+  POST_LIKE,
+} from './constants';
 
 const redusers = (posts = [], action) => {
   switch (action.type) {
+    case POST_DELETE:
+      return posts.filter((post) => post._id !== action.payload);
     case POST_UPDATE:
+    case POST_LIKE:
       return posts.map((post) =>
         post._id === action.payload._id ? action.payload : post
       );
