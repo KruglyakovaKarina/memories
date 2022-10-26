@@ -91,7 +91,9 @@ const Form = ({ currentId, setCurrentId }) => {
           label='Tags'
           fullWidth
           value={postData.tags}
-          onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
+          onChange={(e) =>
+            setPostData({ ...postData, tags: e.target.value.split(',') })
+          }
         ></TextField>
         <div className={classes.fileInput}>
           <FileBase
@@ -115,7 +117,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <Button
           variant='contained'
           color='secondary'
-          size='small'
+          size='large'
           onClick={clear}
           fullWidth
         >

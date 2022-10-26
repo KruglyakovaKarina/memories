@@ -1,6 +1,10 @@
 import * as api from '../api';
-import { POST_FETCH_ALL } from '../reducers/constants.js';
-import { POST_CREATE } from '../reducers/constants.js';
+import {
+  POST_DELETE,
+  POST_FETCH_ALL,
+  POST_UPDATE,
+  POST_CREATE,
+} from '../reducers/constants.js';
 
 const getPosts = () => async (dispatch) => {
   try {
@@ -28,7 +32,7 @@ export const updatePost = (id, post) => async (dispatch) => {
   try {
     const { data } = await api.updatePost(id, post);
 
-    dispatch({ type: 'UPDATE', payload: data });
+    dispatch({ type: POST_UPDATE, payload: data });
   } catch (error) {
     console.log(error.message);
   }
@@ -38,7 +42,7 @@ export const deletePost = (id) => async (dispatch) => {
   try {
     await api.deletePost(id);
 
-    dispatch({ type: 'DELETE', payload: id });
+    dispatch({ type: POST_DELETE, payload: id });
   } catch (error) {
     console.log(error.message);
   }
@@ -48,7 +52,7 @@ export const likePost = (id) => async (dispatch) => {
   try {
     const { data } = await api.likePost(id);
 
-    dispatch({ type: 'UPDATE', payload: data });
+    dispatch({ type: POST_UPDATE, payload: data });
   } catch (error) {
     console.log(error.message);
   }
