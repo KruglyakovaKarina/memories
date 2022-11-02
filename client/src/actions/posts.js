@@ -6,7 +6,7 @@ import {
   POST_CREATE,
 } from '../reducers/constants.js';
 
-const getPosts = () => async (dispatch) => {
+export const getPosts = () => async (dispatch) => {
   try {
     const { data } = await api.fetchPosts();
 
@@ -15,8 +15,6 @@ const getPosts = () => async (dispatch) => {
     console.log(error.message);
   }
 };
-
-export default getPosts;
 
 export const createPost = (post) => async (dispatch) => {
   try {
